@@ -5,6 +5,6 @@ void main() {
   runApp(MaterialApp(
     theme: ThemeData(fontFamily: 'lato'),
     debugShowCheckedModeBanner: false,
-    home: const HomePageMain(),
+    home:HomePage(),
   ));
 }
