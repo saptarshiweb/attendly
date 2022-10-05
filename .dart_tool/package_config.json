@@ -62,10 +62,22 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_barcode_scanner",
+      "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_barcode_scanner-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_test",
@@ -114,6 +126,12 @@
       "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "simple_barcode_scanner",
+      "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/simple_barcode_scanner-0.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "sky_engine",
@@ -170,13 +188,19 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "webview_windows",
+      "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/webview_windows-0.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    },
+    {
       "name": "attendly",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-09-16T05:52:16.837967Z",
+  "generated": "2022-10-05T16:07:35.588367Z",
   "generator": "pub",
-  "generatorVersion": "2.18.0"
+  "generatorVersion": "2.18.2"
 }
