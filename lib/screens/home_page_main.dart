@@ -5,6 +5,8 @@ import 'package:attendly/screens/events_page.dart';
 import 'package:attendly/screens/help_page.dart';
 import 'package:attendly/screens/menu_screen.dart';
 import 'package:attendly/screens/notifications_page.dart';
+import 'package:attendly/screens/register_screen.dart';
+import 'package:attendly/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
