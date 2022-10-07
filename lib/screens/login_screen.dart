@@ -1,7 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:convert';
+
+import 'package:attendly/custom_widgets.dart';
+import 'package:attendly/models/user_model.dart';
+import 'package:attendly/screens/home_page_main.dart';
+import 'package:attendly/screens/register_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,58 +18,111 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  Color accent = Colors.orangeAccent.shade700;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  String url = 'https://attendly-backend.vercel.app/api/login';
+
+  Future LoginUser(String email, String pass) async {
+    final response = await http.post(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': pass,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // ignore: use_build_context_synchronously, unrelated_type_equality_checks
+      LoginResponseMessage loginmessage =
+          LoginResponseMessage(isAuth: false, message: '');
+      loginmessage = LoginResponseMessage.fromJson(jsonDecode(response.body));
+
+      if (loginmessage.isAuth) {
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+          context,
+          CupertinoPageRoute(builder: (context) => HomePage()),
+        );
+      } else {
+        print(loginmessage.message);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-            color: Colors.black,
-          ),
-        ),
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        toolbarHeight: 0.0,
       ),
       body: SingleChildScrollView(
-          child: Column(
-        children: const [],
+          child: Padding(
+        padding: const EdgeInsets.only(left: 30, right: 30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 50),
+            inputFile(label: "Email ID", controller: emailController),
+            inputFile(label: "Password", controller: passwordController),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                LoginUser(emailController.text, passwordController.text);
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: accent, minimumSize: Size.fromHeight(50)),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Create an account? ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => RegisterScreen()));
+                  },
+                  child: Text('Sign Up',
+                      style: TextStyle(
+                          color: accent, fontWeight: FontWeight.bold)),
+                )
+              ],
+            ),
+            SizedBox(height: 12),
+            Center(
+              child: GestureDetector(
+                onTap: () {},
+                child: Text('Forgot Password?',
+                    style:
+                        TextStyle(color: accent, fontWeight: FontWeight.bold)),
+              ),
+            )
+          ],
+        ),
       )),
     );
   }
-}
-
-// we will be creating a widget for text field
-Widget inputFile({label, obscureText = false}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Text(
-        label,
-        style: TextStyle(
-            fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-      ),
-      SizedBox(height: 5),
-      TextField(
-        obscureText: obscureText,
-        decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade400),
-            ),
-            border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade400))),
-      ),
-      SizedBox(
-        height: 10,
-      )
-    ],
-  );
 }

@@ -2,7 +2,9 @@
 
 import 'dart:convert';
 
+import 'package:attendly/custom_widgets.dart';
 import 'package:attendly/screens/login_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -21,28 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String url = 'https://attendly-backend.vercel.app/api/register';
 
-  String firstname = 'Saptarshi';
-  String secondname = 'Mandal';
-  String email = 'sapmessi12345@gmail.com';
-  String password1 = '123456789';
-  String password2 = '123456789';
-
-  // Future save() async {
-  //   var res = await http.post(Uri.parse(url), headers: <String, String>{
-  //     'Context-Type': 'application/json;charSet=UTF-8'
-  //   }, body: <String, String>{
-  //     'firstname': firstnameController.text,
-  //     'secondname': secondnameController.text,
-  //     'email': emailController.text,
-  //     'password': passwordController.text,
-  //     'password2': password2Controller.text
-  //   });
-  //   print(res.body);
-  //   Navigator.push(
-  //       context, MaterialPageRoute(builder: (context) => LoginScreen()));
-  // }
-
-  Future<UserRegister> createPost(String fname, String sname, String email,
+  Future registerUser(String fname, String sname, String email,
       String pass, String pass2) async {
     final response = await http.post(
       Uri.parse(url),
@@ -58,18 +39,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }),
     );
 
-    if (response.statusCode == 201 ||
-        response.statusCode == 200) {
-      // If the server did return a 201 CREATED response,
-      // then parse the JSON.
-      return UserRegister.fromJson(jsonDecode(response.body));
-    } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
-      // ignore: prefer_interpolation_to_compose_strings
-      throw Exception('Failed to create Notes: Status Code - ' +
-          response.statusCode.toString());
-    }
   }
 
   TextEditingController firstnameController = TextEditingController();
@@ -78,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController password2Controller = TextEditingController();
 
-  late UserRegister _userRegister;
+  bool value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +59,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushReplacement(context,
+                CupertinoPageRoute(builder: (context) => LoginScreen()));
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -130,14 +100,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   label: "Confirm Password",
                   obscureText: true,
                   controller: password2Controller),
+
+              //checkbox
+
+              SizedBox(height: 12),
+
+              Row(
+                children: [
+                  Checkbox(
+                    value: value,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        this.value = value!;
+                      });
+                    },
+                  ),
+                  Text(' I agree to the Terms & Conditions'),
+                ],
+              ),
+              SizedBox(height: 20), //Ch
               ElevatedButton(
                 onPressed: () {
-                  createPost(
-                    firstname,secondname,email,password1,password2
-              );
+                  registerUser(
+                    firstnameController.text,
+                    secondnameController.text,
+                    emailController.text,
+                    passwordController.text,
+                    password2Controller.text,
+                  );
 
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.pushReplacement(context,
+                      CupertinoPageRoute(builder: (context) => LoginScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: accent, minimumSize: Size.fromHeight(50)),
@@ -166,8 +159,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     child: Text(
                       " Login",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: accent),
                     ),
                   )
                 ],
@@ -182,33 +177,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
 }
 
 // we will be creating a widget for text field
-Widget inputFile(
-    {label, obscureText = false, required TextEditingController controller}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Text(
-        label,
-        style: TextStyle(
-            fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-      ),
-      SizedBox(height: 5),
-      TextField(
-        controller: controller,
-        obscureText: obscureText,
-        decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade400),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: Colors.orangeAccent.shade700, width: 2),
-            ),
-            border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade400))),
-      ),
-      SizedBox(height: 10)
-    ],
-  );
-}
+
