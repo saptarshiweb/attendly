@@ -1,4 +1,0 @@
-#Thu Oct 06 18:39:59 IST 2022
-base.0=C\:\\Users\\ADMIN\\development\\DSC\\attendly\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
