@@ -5,11 +5,12 @@ import 'package:attendly/screens/events_page.dart';
 import 'package:attendly/screens/help_page.dart';
 import 'package:attendly/screens/menu_screen.dart';
 import 'package:attendly/screens/notifications_page.dart';
-import 'package:attendly/screens/register_screen.dart';
-import 'package:attendly/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:http/http.dart' as http;
+
+import '../color_constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,15 +20,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  MenuItem1 currentItem = MenuItems.event;
+  MenuItem1 currentItem = MenuItems.dashboard;
+
+  
 
   @override
   Widget build(BuildContext context) => ZoomDrawer(
       style: DrawerStyle.defaultStyle,
       borderRadius: 20,
       showShadow: true,
-      drawerShadowsBackgroundColor: Colors.orangeAccent,
-      menuBackgroundColor: Colors.indigo,
+      drawerShadowsBackgroundColor: accent,
+      menuBackgroundColor: Colors.deepPurpleAccent.shade700,
       angle: -10,
       slideWidth: MediaQuery.of(context).size.width * 0.65,
       mainScreen: getScreen(),

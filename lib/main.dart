@@ -11,6 +11,8 @@ void main() async {
     theme: ThemeData(fontFamily: 'lato'),
     debugShowCheckedModeBanner: false,
     home: const StartWidget(),
+
+    // home: const HomePage(),
   ));
 }
 
@@ -24,35 +26,25 @@ class StartWidget extends StatefulWidget {
 class _StartWidgetState extends State<StartWidget> {
   String url = 'https://attendly-backend.vercel.app/api/profile';
 
-  Future profilefetch() async {
+  Future<ProfileLoggedIn> _profilefetch() async {
     final response = await http.get(
       Uri.parse(url),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
-    ProfileLoggedIn profile =
-        ProfileLoggedIn(isAuth: false, id: '', email: '', name: '');
-
-    if (response.statusCode == 200) {
-      profile = ProfileLoggedIn.fromJson(jsonDecode(response.body));
-    }
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    profilefetch();
-    super.initState();
+    ProfileLoggedIn profile = json.decode(response.body);
+    return profile;
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: profilefetch(),
+        future: _profilefetch(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.isAuth == true) {
+              print(snapshot.data!);
               return const HomePage();
             }
           }

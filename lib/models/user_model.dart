@@ -69,12 +69,16 @@ class ProfileLoggedIn {
   final String id;
   final String email;
   final String name;
+  final bool eventregister;
+  final bool eventattend;
 
   ProfileLoggedIn({
     required this.isAuth,
     required this.id,
     required this.email,
     required this.name,
+    required this.eventregister,
+    required this.eventattend,
   });
 
   factory ProfileLoggedIn.fromJson(Map<String, dynamic> json) {
@@ -83,6 +87,8 @@ class ProfileLoggedIn {
       id: json['id'],
       email: json['email'],
       name: json['name'],
+      eventregister: json['eventregister'],
+      eventattend: json['eventattend']
     );
   }
 }
