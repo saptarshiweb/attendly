@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'dart:convert';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:attendly/custom_widgets.dart';
 import 'package:attendly/models/user_model.dart';
 import 'package:attendly/screens/home_page_main.dart';
@@ -25,6 +24,9 @@ class _LoginScreenState extends State<LoginScreen> {
   String url = 'https://attendly-backend.vercel.app/api/login';
 
   Future LoginUser(String email, String pass) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('Name', 'Sample-Error');
+
     final response = await http.post(
       Uri.parse(url),
       headers: <String, String>{
@@ -39,10 +41,13 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response.statusCode == 200) {
       // ignore: use_build_context_synchronously, unrelated_type_equality_checks
       LoginResponseMessage loginmessage =
-          LoginResponseMessage(isAuth: false, message: '');
+          LoginResponseMessage(isAuth: false, message: '', email: '', name: '');
       loginmessage = LoginResponseMessage.fromJson(jsonDecode(response.body));
 
       if (loginmessage.isAuth) {
+        await prefs.setString('Name', loginmessage.name);
+        await prefs.setBool('signIn', true);
+
         // ignore: use_build_context_synchronously
         Navigator.push(
           context,

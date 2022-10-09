@@ -1,12 +1,9 @@
-import 'dart:convert';
-
-import 'package:attendly/models/user_model.dart';
 import 'package:attendly/screens/home_page_main.dart';
 import 'package:attendly/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+void main() {
   runApp(MaterialApp(
     theme: ThemeData(fontFamily: 'lato'),
     debugShowCheckedModeBanner: false,
@@ -16,39 +13,31 @@ void main() async {
   ));
 }
 
-class StartWidget extends StatefulWidget {
-  const StartWidget({Key? key}) : super(key: key);
-
-  @override
-  State<StartWidget> createState() => _StartWidgetState();
-}
-
-class _StartWidgetState extends State<StartWidget> {
-  String url = 'https://attendly-backend.vercel.app/api/profile';
-
-  Future<ProfileLoggedIn> _profilefetch() async {
-    final response = await http.get(
-      Uri.parse(url),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
-    ProfileLoggedIn profile = json.decode(response.body);
-    return profile;
-  }
+class StartWidget extends StatelessWidget {
+  const StartWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: _profilefetch(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data!.isAuth == true) {
-              print(snapshot.data!);
-              return const HomePage();
-            }
-          }
-          return const LoginScreen();
-        });
+    bool go = false;
+    checkToken() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final bool? token = prefs.getBool("signIn");
+      if (token == true) {
+        go = true;
+      }
+    }
+
+    // checkToken();
+
+    // return const LoginScreen();
+
+    return Scaffold(
+      body: FutureBuilder(
+          future: checkToken(),
+          builder: ((context, snapshot) {
+            if (go) return const HomePage();
+            return const LoginScreen();
+          })),
+    );
   }
 }

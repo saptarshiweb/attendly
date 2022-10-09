@@ -24,7 +24,6 @@ class UserRegister {
   }
 }
 
-
 //Login User
 class UserLogin {
   final String email;
@@ -43,22 +42,27 @@ class UserLogin {
   }
 }
 
-
 //Response Message for Logging In
 
 class LoginResponseMessage {
   final bool isAuth;
   final String message;
+  final String email;
+  final String name;
 
   LoginResponseMessage({
     required this.isAuth,
     required this.message,
+    required this.email,
+    required this.name,
   });
 
   factory LoginResponseMessage.fromJson(Map<String, dynamic> json) {
     return LoginResponseMessage(
       isAuth: json['isAuth'],
       message: json['message'],
+      email: json['email'],
+      name: json['name']
     );
   }
 }
@@ -83,12 +87,11 @@ class ProfileLoggedIn {
 
   factory ProfileLoggedIn.fromJson(Map<String, dynamic> json) {
     return ProfileLoggedIn(
-      isAuth: json['isAuth'],
-      id: json['id'],
-      email: json['email'],
-      name: json['name'],
-      eventregister: json['eventregister'],
-      eventattend: json['eventattend']
-    );
+        isAuth: json['isAuth'],
+        id: json['id'],
+        email: json['email'],
+        name: json['name'],
+        eventregister: json['eventregister'],
+        eventattend: json['eventattend']);
   }
 }
