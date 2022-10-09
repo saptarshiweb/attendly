@@ -2,7 +2,8 @@ import 'package:attendly/color_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:attendly/models/menu_item.dart';
-import 'package:lottie/lottie.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
 import 'package:carbon_icons/carbon_icons.dart';
@@ -54,18 +55,15 @@ class MenuPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 60),
                     Row(
-                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        profilewidget(),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.55,
+                            child: profilewidget()),
                       ],
                     ),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(UserName),
-                    ),
+                    const SizedBox(height: 18),
                     ...MenuItems.all.map(buildMenuItem).toList(),
                     const SizedBox(height: 40),
                     Padding(
@@ -93,7 +91,6 @@ class MenuPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Spacer(flex: 2),
                   ],
                 ),
               );
@@ -107,27 +104,48 @@ class MenuPage extends StatelessWidget {
       padding: const EdgeInsets.only(left: 12),
       child: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              accent.withOpacity(0.4),
-              accent.withOpacity(0.5),
-              accent.withOpacity(0.6),
-              accent.withOpacity(0.8),
-            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-            borderRadius:
-                const BorderRadius.only(topLeft: Radius.circular(18))),
+            border: Border.all(color: accent, width: 2),
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(18), topRight: Radius.circular(18))),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                child: Lottie.asset('assets/dsc.json'),
+              Row(
+                children: [
+                  Icon(
+                    FontAwesome.buysellads,
+                    color: accent,
+                    size: 40,
+                  ),
+                  const SizedBox(width: 7),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Hello! ',
+                            style: TextStyle(
+                              color: t3,
+                            ),
+                          ),
+                          Icon(FontAwesome5.laugh, color: accent, size: 12),
+                        ],
+                      ),
+                      Text(
+                        UserName,
+                        style: TextStyle(
+                            color: t1,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      )
+                    ],
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              Text(
-                UserName,
-                style: TextStyle(
-                    color: t1, fontWeight: FontWeight.bold, fontSize: 14),
-              )
+              const SizedBox(height: 8),
             ],
           ),
         ),
@@ -138,10 +156,10 @@ class MenuPage extends StatelessWidget {
   Widget buildMenuItem(MenuItem1 item) => ListTileTheme(
         selectedColor: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 14),
+          padding: const EdgeInsets.only(left: 8, right: 18),
           child: ListTile(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(10),
             ),
             selectedTileColor: accent.withOpacity(0.3),
             iconColor: Colors.grey.shade900,

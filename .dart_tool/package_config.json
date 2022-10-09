@@ -116,6 +116,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "fluttericon",
+      "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/fluttericon-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.5",
       "packageUri": "lib/",
@@ -338,7 +344,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-09T13:59:34.703173Z",
+  "generated": "2022-10-09T17:58:00.627529Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

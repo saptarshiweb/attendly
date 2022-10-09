@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:convert';
+import 'package:attendly/color_constants.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:attendly/custom_widgets.dart';
 import 'package:attendly/models/user_model.dart';
@@ -8,7 +10,6 @@ import 'package:attendly/screens/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -76,10 +77,25 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             SizedBox(height: 50),
             Center(
-              child: Lottie.asset('assets/login-page.json'),
+                child: Icon(
+              FontAwesome5.autoprefixer,
+              color: accent,
+              size: 70,
+            )),
+            SizedBox(height: 40),
+            Center(
+              child: Text(
+                'Welcome to Attendly!',
+                style: TextStyle(
+                    color: t1, fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
+            SizedBox(height: 20),
             inputFile(label: "Email ID", controller: emailController),
-            inputFile(label: "Password", controller: passwordController),
+            inputFile(
+                label: "Password",
+                obscureText: true,
+                controller: passwordController),
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
