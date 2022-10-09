@@ -1,3 +1,4 @@
+import 'package:attendly/color_constants.dart';
 import 'package:attendly/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +15,11 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.orangeAccent.shade700,
+        backgroundColor: dashboardbgcolor,
         title: const Text('Dashboard'),
         leading: const MenuWidget(),
       ),
-      body: Container(
-        color: Colors.orangeAccent.shade700,
-      ),
+      body: Container(color: dashboardbgcolor),
     );
   }
 }
