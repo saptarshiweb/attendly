@@ -1,8 +1,8 @@
+import 'package:attendly/color_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:attendly/models/menu_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// WB98K0765
 import 'login_screen.dart';
 
 //all drawer Items present here
@@ -43,7 +43,7 @@ class MenuPage extends StatelessWidget {
     return Theme(
         data: ThemeData.dark(),
         child: Scaffold(
-          backgroundColor: Colors.indigo,
+          backgroundColor: drawercolor,
           body: FutureBuilder(
             future: getname(),
             builder: ((context, snapshot) {

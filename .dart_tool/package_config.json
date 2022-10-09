@@ -20,6 +20,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "carbon_icons",
+      "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/carbon_icons-0.0.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///D:/FlutterInstall/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.1",
       "packageUri": "lib/",
@@ -332,7 +338,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-09T05:31:37.862927Z",
+  "generated": "2022-10-09T05:43:01.080632Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }
