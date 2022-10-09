@@ -8,6 +8,7 @@ import 'package:attendly/screens/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -74,6 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 50),
+            Center(
+              child: Lottie.asset('assets/login-page.json'),
+            ),
             inputFile(label: "Email ID", controller: emailController),
             inputFile(label: "Password", controller: passwordController),
             SizedBox(height: 10),

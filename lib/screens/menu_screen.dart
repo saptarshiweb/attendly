@@ -21,7 +21,7 @@ class MenuPage extends StatelessWidget {
   // ignore: non_constant_identifier_names
   String UserName = '';
 
-  Future getname() async {
+  Future getname() async {http://localhost:2513/#/
     final prefs = await SharedPreferences.getInstance();
     final String? name = prefs.getString('Name');
 
@@ -94,18 +94,22 @@ class MenuPage extends StatelessWidget {
   }
 
   Widget buildMenuItem(MenuItem1 item) => ListTileTheme(
-        selectedColor: Colors.white,
+        selectedColor: Colors.black,
         child: Padding(
           padding: const EdgeInsets.only(left: 4),
           child: ListTile(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            selectedTileColor: Colors.black26,
+            selectedTileColor:
+                Colors.deepPurpleAccent.shade100.withOpacity(0.8),
             selected: currentItem == item,
             minLeadingWidth: 20,
             leading: Icon(item.icon),
-            title: Text(item.title),
+            title: Text(
+              item.title,
+              style: TextStyle(color: Colors.grey.shade900),
+            ),
             onTap: () {
               onSelectedItem(item);
             },

@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
       drawerShadowsBackgroundColor: accent,
       menuBackgroundColor: drawercolor,
       angle: -10,
-      slideWidth: MediaQuery.of(context).size.width * 0.65,
+      slideWidth: MediaQuery.of(context).size.width * 0.85,
       mainScreen: getScreen(),
       menuScreen: Builder(
         builder: (context) => MenuPage(

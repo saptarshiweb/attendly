@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
 
 Color accent = Colors.deepOrangeAccent.shade700;
-Color drawercolor = Colors.deepPurple.shade900;
+Color drawercolor = Colors.white;

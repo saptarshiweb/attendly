@@ -13,9 +13,13 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.orangeAccent.shade700,
         title: const Text('Dashboard'),
         leading: const MenuWidget(),
+      ),
+      body: Container(
+        color: Colors.orangeAccent.shade700,
       ),
     );
   }
