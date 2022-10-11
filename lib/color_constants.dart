@@ -11,6 +11,7 @@ Color drawercolor = Colors.white;
 
 //page Background Colors
 
-Color dashboardbgcolor = Colors.blueGrey.shade900;
-Color eventbgcolor = Colors.deepPurple.shade900;
+Color dashboardbgcolor = Colors.purpleAccent.shade700;
+Color eventbgcolor = const Color.fromARGB(255, 44, 16, 84);
+Color eventbgcolor2 = const Color.fromARGB(255, 119, 37, 234);
 Color helpbgcolor = Colors.deepPurple.shade900;

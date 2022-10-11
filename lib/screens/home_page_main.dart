@@ -19,11 +19,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  MenuItem1 currentItem = MenuItems.dashboard;
+  MenuItem1 currentItem = MenuItems.event;
 
   @override
   Widget build(BuildContext context) => ZoomDrawer(
       style: DrawerStyle.defaultStyle,
+      
       borderRadius: 20,
       showShadow: true,
       drawerShadowsBackgroundColor: accent,
