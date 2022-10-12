@@ -4,14 +4,22 @@ import 'package:flutter/material.dart';
 
 Color t1 = Colors.black;
 Color t2 = Colors.white;
-Color t3 = Colors.grey.shade800;
+Color t3 = Colors.grey.shade400;
 
 Color accent = Colors.deepOrangeAccent.shade700;
+Color accent2 = Colors.orangeAccent.shade400;
 Color drawercolor = Colors.white;
 
 //page Background Colors
-
+//dashboard
 Color dashboardbgcolor = Colors.purpleAccent.shade700;
+
+//event
 Color eventbgcolor = const Color.fromARGB(255, 44, 16, 84);
-Color eventbgcolor2 = const Color.fromARGB(255, 119, 37, 234);
-Color helpbgcolor = Colors.deepPurple.shade900;
+Color eventbgcolor2 = const Color.fromARGB(255, 38, 2, 70);
+Color eventcolor = Colors.deepPurpleAccent.shade200;
+
+Color notificationbgcolor = Colors.pinkAccent.shade400;
+
+Color helpbgcolor = Colors.lightGreenAccent.shade700;
+Color contactusbgcolor = Colors.deepPurple.shade900;

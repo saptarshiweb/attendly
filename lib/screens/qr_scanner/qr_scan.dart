@@ -14,7 +14,7 @@ class _QrScanState extends State<QrScan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        elevation: 0,toolbarHeight: 0,
       ),
       body: Center(
         child: ElevatedButton(

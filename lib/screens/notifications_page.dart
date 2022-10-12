@@ -1,6 +1,6 @@
+import 'package:attendly/color_constants.dart';
+import 'package:attendly/custom_widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/menu_widget.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -12,12 +12,6 @@ class Notifications extends StatefulWidget {
 class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pinkAccent.shade400,
-        title: const Text('Notifications'),
-        leading: const MenuWidget(),
-      ),
-    );
+    return Scaffold(appBar: customAppBar('Notifications', notificationbgcolor));
   }
 }

@@ -1,6 +1,6 @@
+import 'package:attendly/color_constants.dart';
+import 'package:attendly/custom_widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/menu_widget.dart';
 
 class HelpPage extends StatefulWidget {
   const HelpPage({super.key});
@@ -13,11 +13,7 @@ class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreenAccent.shade400,
-        title: const Text('Help'),
-        leading: const MenuWidget(),
-      ),
+      appBar: customAppBar('Help', helpbgcolor),
       body: const Text('Help Page'),
     );
   }

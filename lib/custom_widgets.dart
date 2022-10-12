@@ -1,4 +1,5 @@
 import 'package:attendly/color_constants.dart';
+import 'package:attendly/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 Color accent = Colors.orangeAccent.shade700;
@@ -42,5 +43,17 @@ Widget inputFile(
                 borderSide: BorderSide(color: Colors.grey.shade400))),
       ),
     ),
+  );
+}
+
+AppBar customAppBar(String text, Color col) {
+  return AppBar(
+    elevation: 0,
+    backgroundColor: col,
+    title: Text(
+      text,
+      style: TextStyle(color: t2, fontWeight: FontWeight.bold, fontSize: 24),
+    ),
+    leading: const MenuWidget(),
   );
 }

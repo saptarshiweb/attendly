@@ -1,10 +1,9 @@
 import 'package:attendly/color_constants.dart';
+import 'package:attendly/custom_widgets.dart';
 import 'package:attendly/screens/qr_scanner/specific_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-
-import '../widgets/menu_widget.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({super.key});
@@ -18,12 +17,7 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: eventbgcolor,
-          title: const Center(child: Text('Events')),
-          leading: const MenuWidget(),
-        ),
+        appBar: customAppBar('Events', eventbgcolor),
         body: Container(
           color: eventbgcolor,
           child: Padding(
@@ -85,7 +79,7 @@ class _EventPageState extends State<EventPage> {
                 const Spacer(),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           CupertinoPageRoute(
                               builder: (context) => const SpecificEvent()));

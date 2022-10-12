@@ -1,5 +1,5 @@
 import 'package:attendly/color_constants.dart';
-import 'package:attendly/widgets/menu_widget.dart';
+import 'package:attendly/custom_widgets.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -13,12 +13,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: dashboardbgcolor,
-        title: const Text('Dashboard'),
-        leading: const MenuWidget(),
-      ),
+      appBar: customAppBar('Dashboard', dashboardbgcolor),
       body: Container(color: dashboardbgcolor),
     );
   }
