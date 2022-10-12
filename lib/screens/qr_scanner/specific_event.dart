@@ -90,7 +90,7 @@ Widget infowidget() {
                     Text(
                       'GDSC Info-Session  ',
                       style: TextStyle(
-                          color: t2, fontSize: 24, fontWeight: FontWeight.bold),
+                          color: t2, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Icon(
                       FontAwesome.empire,
@@ -102,7 +102,7 @@ Widget infowidget() {
                 const SizedBox(height: 4),
                 Text(
                   'By Google Developer Student Clubs',
-                  style: TextStyle(color: Colors.grey.shade400, fontSize: 16),
+                  style: TextStyle(color: Colors.grey.shade400, fontSize: 14),
                 ),
                 const SizedBox(height: 7),
                 Row(
@@ -149,7 +149,7 @@ Widget infowidget() {
                       'NOV',
                       style: TextStyle(
                         color: t2,
-                        fontSize: 16,
+                        fontSize: 12,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -157,7 +157,7 @@ Widget infowidget() {
                       '18',
                       style: TextStyle(
                           color: Colors.orangeAccent.shade400,
-                          fontSize: 18,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold),
                     )
                   ],
@@ -191,7 +191,7 @@ Widget aboutevent() {
           trimLines: 2,
           style: TextStyle(
             color: t2,
-            fontSize: 19,
+            fontSize: 14,
           ),
           colorClickableText: Colors.pink,
           trimMode: TrimMode.Line,
