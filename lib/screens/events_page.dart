@@ -1,4 +1,6 @@
 import 'package:attendly/color_constants.dart';
+import 'package:attendly/screens/qr_scanner/specific_event.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 
@@ -30,6 +32,7 @@ class _EventPageState extends State<EventPage> {
               children: [
                 upcoming(),
                 const SizedBox(height: 20),
+                eventlist(),
               ],
             ),
           ),
@@ -64,11 +67,39 @@ class _EventPageState extends State<EventPage> {
 
   Widget eventlist() {
     return Container(
-      decoration: BoxDecoration(color: eventbgcolor.withOpacity(0.7)),
+      decoration: BoxDecoration(
+        color: eventbgcolor2,
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(18),
         child: Column(
-          children: const [],
+          children: [
+            Row(
+              children: [
+                Text(
+                  'GDSC Info Session',
+                  style: TextStyle(
+                      color: t2, fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const SpecificEvent()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: eventbgcolor,
+                    ),
+                    child: Text(
+                      'Details',
+                      style: TextStyle(color: t2),
+                    ))
+              ],
+            ),
+          ],
         ),
       ),
     );
