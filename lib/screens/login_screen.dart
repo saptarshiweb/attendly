@@ -25,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String url = 'https://attendly-backend.vercel.app/api/login';
 
+  // ignore: non_constant_identifier_names
   Future LoginUser(String email, String pass) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('Name', 'Sample-Error');
@@ -56,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           CupertinoPageRoute(builder: (context) => HomePage()),
         );
       } else {
+        // ignore: avoid_print
         print(loginmessage.message);
       }
     }

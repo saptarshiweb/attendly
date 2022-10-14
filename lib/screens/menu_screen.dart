@@ -21,6 +21,7 @@ class MenuItems {
   static const all = <MenuItem1>[dashboard, event, noti, help, contact];
 }
 
+// ignore: must_be_immutable
 class MenuPage extends StatelessWidget {
   // ignore: non_constant_identifier_names
   String UserName = '';

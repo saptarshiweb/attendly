@@ -2,7 +2,6 @@ import 'package:attendly/color_constants.dart';
 import 'package:attendly/screens/qr_scanner/ticket_show.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
@@ -17,6 +16,20 @@ class SpecificEvent extends StatefulWidget {
 }
 
 class _SpecificEventState extends State<SpecificEvent> {
+  late Image myImage;
+
+  @override
+  void initState() {
+    super.initState();
+    myImage = Image.asset('assets/gdsc_black.png');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(myImage.image, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,44 +52,37 @@ class _SpecificEventState extends State<SpecificEvent> {
 Widget registerbutton(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(left: 40, right: 40, bottom: 10),
-    child: Row(
-      children: [
-        Expanded(
-          child: SliderButton(
-            buttonColor: t2,
-            backgroundColor: eventcolor,
-            baseColor: t2,
-            highlightedColor: t1,
-            buttonSize: 52,
-            action: () {
-              ///Do something here
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => const TicketShow()));
-            },
-            label: Text(
-              "Register for the event",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: t2, fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            icon: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Icon(
-                FontAwesome5.angle_double_right,
-                color: eventcolor,
-                size: 24,
-              ),
-            ),
-          ),
+    child: SliderButton(
+      buttonColor: t2,
+      backgroundColor: eventcolor,
+      baseColor: t2,
+      highlightedColor: t1,
+      buttonSize: 52,
+      action: () {
+        ///Do something here
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => const TicketShow()));
+      },
+      label: Text(
+        "Register for the event",
+        textAlign: TextAlign.center,
+        style: TextStyle(color: t2, fontWeight: FontWeight.bold, fontSize: 18),
+      ),
+      icon: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Icon(
+          FontAwesome5.angle_double_right,
+          color: eventcolor,
+          size: 24,
         ),
-      ],
+      ),
     ),
   );
 }
 
 Widget infowidget() {
   return Padding(
-    padding: const EdgeInsets.only(left: 16, right: 16),
+    padding: const EdgeInsets.only(left: 16, right: 14),
     child: Column(
       children: [
         const SizedBox(height: 25),
@@ -88,7 +94,7 @@ Widget infowidget() {
                 Row(
                   children: [
                     Text(
-                      'GDSC Info-Session  ',
+                      'GDSC Info-Session     ',
                       style: TextStyle(
                           color: t2, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -112,25 +118,25 @@ Widget infowidget() {
                     Icon(
                       Typicons.location,
                       color: Colors.deepOrangeAccent.shade200,
-                      size: 22,
+                      size: 19,
                     ),
                     const SizedBox(width: 2),
                     Text(
                       ' Kalyani, Nadia',
                       style:
-                          TextStyle(color: Colors.grey.shade400, fontSize: 16),
+                          TextStyle(color: Colors.grey.shade400, fontSize: 14),
                     ),
                     const SizedBox(width: 2),
                     Icon(
                       FontAwesome.clock,
                       color: Colors.deepOrangeAccent.shade200,
-                      size: 22,
+                      size: 19,
                     ),
                     const SizedBox(width: 2),
                     Text(
                       ' 18:00 PM - 22:00 PM',
                       style:
-                          TextStyle(color: Colors.grey.shade400, fontSize: 16),
+                          TextStyle(color: Colors.grey.shade400, fontSize: 14),
                     ),
                   ],
                 )
@@ -191,7 +197,7 @@ Widget aboutevent() {
           trimLines: 2,
           style: TextStyle(
             color: t2,
-            fontSize: 14,
+            fontSize: 16,
           ),
           colorClickableText: Colors.pink,
           trimMode: TrimMode.Line,
@@ -230,14 +236,17 @@ Widget upper(BuildContext context) {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight),
             ),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Entypo.left_open,
-                color: t2,
-                size: 34,
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Typicons.left_open_outline,
+                  color: t2,
+                  size: 20,
+                ),
               ),
             ),
           ),
@@ -254,12 +263,17 @@ Widget upper(BuildContext context) {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight),
             ),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Typicons.bookmark,
-                color: t2,
-                size: 24,
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Typicons.bookmark,
+                  color: t2,
+                  size: 20,
+                ),
               ),
             ),
           ),

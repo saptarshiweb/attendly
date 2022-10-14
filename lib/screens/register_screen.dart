@@ -24,6 +24,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future registerUser(String fname, String sname, String email,
       String pass, String pass2) async {
+    // ignore: unused_local_variable
     final response = await http.post(
       Uri.parse(url),
       headers: <String, String>{

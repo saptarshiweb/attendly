@@ -16,6 +16,20 @@ class TicketShow extends StatefulWidget {
 }
 
 class _TicketShowState extends State<TicketShow> {
+  late Image myImage;
+
+  @override
+  void initState() {
+    super.initState();
+    myImage = Image.asset('assets/gdsc_white.png');
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(myImage.image, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,48 +37,43 @@ class _TicketShowState extends State<TicketShow> {
         elevation: 0,
         toolbarHeight: 0,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          color: eventbgcolor,
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 18, right: 14, top: 30, bottom: 12),
-            child: Column(
-              children: [
-                //headline
-                Row(
-                  children: [
-                    Text(
-                      'Event Ticket',
-                      style: TextStyle(
-                          color: t2, fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    const Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: t2, width: 1),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(1.0),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            FontAwesome.export_alt,
-                            color: t2,
-                            size: 22,
-                          ),
-                        ),
+      body: Container(
+        color: eventbgcolor,
+        child: Padding(
+          padding:
+              const EdgeInsets.only(left: 18, right: 14, top: 10, bottom: 12),
+          child: Column(
+            children: [
+              //headline
+              Row(
+                children: [
+                  Text(
+                    'Event Ticket',
+                    style: TextStyle(
+                        color: t2, fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  const Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: t2, width: 1),
+                        borderRadius: BorderRadius.circular(14)),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(
+                        FontAwesome.export_alt,
+                        color: t2,
+                        size: 17,
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                //ticket widget
-                ticketwidget()
-              ],
-            ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              //ticket widget
+              ticketwidget()
+            ],
           ),
         ),
       ),
@@ -75,8 +84,8 @@ class _TicketShowState extends State<TicketShow> {
     return TicketWidget(
       color: eventbgcolor2,
       width: double.infinity,
-      height: 600,
-      isCornerRounded: true,
+      height: MediaQuery.of(context).size.height * 0.8,
+      isCornerRounded: false,
       padding: const EdgeInsets.only(left: 18, top: 15, bottom: 14, right: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +93,7 @@ class _TicketShowState extends State<TicketShow> {
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
             child: const Image(
-                height: 200,
+                height: 140,
                 width: double.infinity,
                 fit: BoxFit.cover,
                 image: AssetImage('assets/gdsc_white.png')),
@@ -122,14 +131,14 @@ class _TicketShowState extends State<TicketShow> {
           ),
           const SizedBox(height: 30),
           Text(
-            'Location',
+            '    Location',
             style: TextStyle(
               color: t3,
               fontSize: 17,
             ),
           ),
           Text(
-            'Seminar Hall, North Block',
+            '    Seminar Hall, North Block',
             style: TextStyle(
               color: t2,
               fontWeight: FontWeight.bold,
@@ -230,40 +239,34 @@ class _TicketShowState extends State<TicketShow> {
               ),
             ],
           ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                child: SliderButton(
-                  buttonColor: t2,
-                  backgroundColor: accent2,
-                  baseColor: t2,
-                  highlightedColor: t1,
-                  buttonSize: 52,
-                  action: () {
-                    ///Do something here
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const QrScan()));
-                  },
-                  label: Text(
-                    "Attend the event!                  ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: t2, fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  icon: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Icon(
-                      FontAwesome5.angle_double_right,
-                      color: accent2,
-                      size: 24,
-                    ),
-                  ),
+          const Spacer(),
+          Center(
+            child: SliderButton(
+              buttonColor: t2,
+              backgroundColor: accent2,
+              baseColor: t2,
+              highlightedColor: t1,
+              buttonSize: 52,
+              action: () async {
+                ///Do something here
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => const QrScan()));
+              },
+              label: Text(
+                "Attend the event!",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: t2, fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              icon: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Icon(
+                  FontAwesome5.angle_double_right,
+                  color: accent2,
+                  size: 24,
                 ),
               ),
-            ],
+            ),
           ),
         ],
       ),

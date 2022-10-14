@@ -47,6 +47,7 @@ dependencies:
   slider_button: ^2.0.0
   ticket_widget: ^0.0.1
   dotted_line: ^3.1.0
+  pretty_qr_code: ^2.0.2
 
 dev_dependencies:
   flutter_test:

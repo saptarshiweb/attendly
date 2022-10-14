@@ -16,7 +16,7 @@ Color dashboardbgcolor = Colors.purpleAccent.shade700;
 
 //event
 Color eventbgcolor = const Color.fromARGB(255, 44, 16, 84);
-Color eventbgcolor2 = const Color.fromARGB(255, 38, 2, 70);
+Color eventbgcolor2 = const Color.fromARGB(255, 126, 38, 184);
 Color eventcolor = Colors.deepPurpleAccent.shade200;
 
 Color notificationbgcolor = Colors.pinkAccent.shade400;
