@@ -59,39 +59,27 @@ class LoginResponseMessage {
 
   factory LoginResponseMessage.fromJson(Map<String, dynamic> json) {
     return LoginResponseMessage(
-      isAuth: json['isAuth'],
-      message: json['message'],
-      email: json['email'],
-      name: json['name']
-    );
+        isAuth: json['isAuth'],
+        message: json['message'],
+        email: json['email'],
+        name: json['name']);
   }
 }
 //Profile logged In
 
-class ProfileLoggedIn {
-  final bool isAuth;
-  final String id;
-  final String email;
-  final String name;
-  final bool eventregister;
-  final bool eventattend;
+class RegisterResponseMessage {
+  final bool auth;
+  final String message;
 
-  ProfileLoggedIn({
-    required this.isAuth,
-    required this.id,
-    required this.email,
-    required this.name,
-    required this.eventregister,
-    required this.eventattend,
+  RegisterResponseMessage({
+    required this.auth,
+    required this.message,
   });
 
-  factory ProfileLoggedIn.fromJson(Map<String, dynamic> json) {
-    return ProfileLoggedIn(
-        isAuth: json['isAuth'],
-        id: json['id'],
-        email: json['email'],
-        name: json['name'],
-        eventregister: json['eventregister'],
-        eventattend: json['eventattend']);
+  factory RegisterResponseMessage.fromJson(Map<String, dynamic> json) {
+    return RegisterResponseMessage(
+      auth: json['auth'],
+      message: json['message'],
+    );
   }
 }

@@ -3,6 +3,11 @@ import 'package:attendly/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 Color accent = Colors.orangeAccent.shade700;
+Widget loadwidget() {
+  return CircularProgressIndicator(
+    color: accent2,
+  );
+}
 
 Widget inputFile(
     {label, obscureText = false, required TextEditingController controller}) {

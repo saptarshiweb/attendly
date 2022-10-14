@@ -11,6 +11,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:ndialog/ndialog.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -19,6 +21,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  String errormessage = 'Error Occured. Pls try again.';
+
   Color accent = Colors.orangeAccent.shade700;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -27,6 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // ignore: non_constant_identifier_names
   Future LoginUser(String email, String pass) async {
+    CustomProgressDialog progressDialog = CustomProgressDialog(context,
+        loadingWidget: loadwidget(),
+        blur: 12,
+        backgroundColor: Colors.transparent);
+    progressDialog.show();
+
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('Name', 'Sample-Error');
 
@@ -59,6 +69,54 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         // ignore: avoid_print
         print(loginmessage.message);
+
+        NAlertDialog alertDialog = NAlertDialog(
+          title: Row(
+            children: [
+              Text(
+                'Error',
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold),
+              ),
+              Spacer(),
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.cancel,
+                    color: Colors.red,
+                    size: 22,
+                  ))
+            ],
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey.shade400),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Dismiss',
+                    style: TextStyle(
+                        fontSize: 15, color: t1, fontWeight: FontWeight.bold),
+                  )),
+            )
+          ],
+          content: Text(
+            loginmessage.message,
+            style: TextStyle(color: t1, fontWeight: FontWeight.bold),
+          ),
+        );
+
+        progressDialog.dismiss();
+        // ignore: use_build_context_synchronously
+        alertDialog.show(context);
       }
     }
   }
