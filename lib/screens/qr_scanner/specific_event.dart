@@ -6,6 +6,7 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:readmore/readmore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:slider_button/slider_button.dart';
 
 class SpecificEvent extends StatefulWidget {
@@ -58,8 +59,12 @@ Widget registerbutton(BuildContext context) {
       baseColor: t2,
       highlightedColor: t1,
       buttonSize: 52,
-      action: () {
+      action: () async {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('EventRegister', true);
+
         ///Do something here
+        // ignore: use_build_context_synchronously
         Navigator.push(context,
             CupertinoPageRoute(builder: (context) => const TicketShow()));
       },

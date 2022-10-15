@@ -1,4 +1,5 @@
 import 'package:attendly/color_constants.dart';
+import 'package:attendly/screens/home_page_main.dart';
 import 'package:attendly/screens/qr_scanner/qr_scan.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
@@ -46,25 +47,49 @@ class _TicketShowState extends State<TicketShow> {
             children: [
               //headline
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: t2, width: 1),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          FontAwesome.left_open,
+                          color: t2,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
                   Text(
                     'Event Ticket',
                     style: TextStyle(
                         color: t2, fontSize: 25, fontWeight: FontWeight.bold),
                   ),
-                  const Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: t2, width: 1),
-                        borderRadius: BorderRadius.circular(14)),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        FontAwesome.export_alt,
-                        color: t2,
-                        size: 17,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const HomePage()));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: t2, width: 1),
+                          borderRadius: BorderRadius.circular(14)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          FontAwesome.home,
+                          color: t2,
+                          size: 22,
+                        ),
                       ),
                     ),
                   ),

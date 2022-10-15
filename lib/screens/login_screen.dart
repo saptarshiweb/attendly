@@ -39,6 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('Name', 'Sample-Error');
+    await prefs.setString('Email', 'Sample-Error');
+    await prefs.setBool('EventRegister', false);
+    await prefs.setBool('EventAttend', false);
 
     final response = await http.post(
       Uri.parse(url),
@@ -59,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (loginmessage.isAuth) {
         await prefs.setString('Name', loginmessage.name);
+        await prefs.setString('Email', loginmessage.email);
         await prefs.setBool('signIn', true);
 
         // ignore: use_build_context_synchronously
