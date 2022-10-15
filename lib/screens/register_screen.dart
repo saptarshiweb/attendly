@@ -53,65 +53,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
       errormessage = 'Password and Confirm Password \ndo not match.';
     } else if (pass.length < 8) {
       errormessage = "Password Length must be\nat least 8.";
-    }
-
-    if (response.statusCode == 200) {
+    } else if (response.statusCode == 200 || response.statusCode == 400) {
       RegisterResponseMessage registerResponse =
           RegisterResponseMessage(auth: false, message: 'Error');
       registerResponse =
           RegisterResponseMessage.fromJson(jsonDecode(response.body));
 
+      errormessage = registerResponse.message;
+
       if (registerResponse.auth == true) {
+        // ignore: use_build_context_synchronously
+        progressDialog.dismiss();
         // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
             context, CupertinoPageRoute(builder: (context) => LoginScreen()));
-      } else {
-        NAlertDialog alertDialog = NAlertDialog(
-          title: Row(
-            children: [
-              Text(
-                'Error',
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-              Spacer(),
-              IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.cancel,
-                    color: Colors.red,
-                    size: 22,
-                  ))
-            ],
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade400),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    'Dismiss',
-                    style: TextStyle(
-                        fontSize: 15, color: t1, fontWeight: FontWeight.bold),
-                  )),
-            )
-          ],
-          content: Text(
-            errormessage,
-            style: TextStyle(color: t1, fontWeight: FontWeight.bold),
-          ),
-        );
-        progressDialog.dismiss();
-        // ignore: use_build_context_synchronously
-        alertDialog.show(context);
       }
     }
     NAlertDialog alertDialog = NAlertDialog(
