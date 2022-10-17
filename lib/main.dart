@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MaterialApp(
+    title: 'Attendly',
     theme: ThemeData(fontFamily: 'lato'),
     debugShowCheckedModeBanner: false,
     home: const StartWidget(),

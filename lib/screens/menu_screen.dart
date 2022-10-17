@@ -2,7 +2,6 @@ import 'package:attendly/color_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:attendly/models/menu_item.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
@@ -124,16 +123,12 @@ class MenuPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Hello! ',
-                            style: TextStyle(
-                              color: t3,
-                            ),
-                          ),
-                          Icon(FontAwesome5.laugh, color: accent, size: 12),
-                        ],
+                      Text(
+                        'Welcome !',
+                        style: TextStyle(
+                            color: accent2,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Text(
                         UserName,

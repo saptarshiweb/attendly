@@ -154,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: t1, fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 60),
             inputFile(label: "Email ID", controller: emailController),
             inputFile(
                 label: "Password",

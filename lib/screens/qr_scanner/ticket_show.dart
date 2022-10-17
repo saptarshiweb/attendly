@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:slider_button/slider_button.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
 class TicketShow extends StatefulWidget {
@@ -265,34 +264,31 @@ class _TicketShowState extends State<TicketShow> {
             ],
           ),
           const Spacer(),
-          Center(
-            child: SliderButton(
-              buttonColor: t2,
-              backgroundColor: accent2,
-              baseColor: t2,
-              highlightedColor: t1,
-              buttonSize: 52,
-              action: () async {
-                ///Do something here
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: accent2),
+              onPressed: () {
                 Navigator.push(context,
                     CupertinoPageRoute(builder: (context) => const QrScan()));
               },
-              label: Text(
-                "Attend the event!",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: t2, fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              icon: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Icon(
-                  FontAwesome5.angle_double_right,
-                  color: accent2,
-                  size: 24,
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      FontAwesome5.angle_double_right,
+                      color: t2,
+                      size: 24,
+                    ),
+                    Text(
+                      "    Attend the event!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: t2, fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-          ),
+              )),
         ],
       ),
     );
