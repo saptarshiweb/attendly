@@ -68,51 +68,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Navigator.pushReplacement(
             context, CupertinoPageRoute(builder: (context) => LoginScreen()));
       }
-    }
-    NAlertDialog alertDialog = NAlertDialog(
-      title: Row(
-        children: [
-          Text(
-            'Error',
-            style: TextStyle(
-                color: Colors.red, fontSize: 22, fontWeight: FontWeight.bold),
-          ),
-          Spacer(),
-          IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.cancel,
-                color: Colors.red,
-                size: 22,
-              ))
+    } else {
+      NAlertDialog alertDialog = NAlertDialog(
+        title: Row(
+          children: [
+            Text(
+              'Error',
+              style: TextStyle(
+                  color: Colors.red, fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            Spacer(),
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.cancel,
+                  color: Colors.red,
+                  size: 22,
+                ))
+          ],
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey.shade400),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Dismiss',
+                  style: TextStyle(
+                      fontSize: 15, color: t1, fontWeight: FontWeight.bold),
+                )),
+          )
         ],
-      ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey.shade400),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                'Dismiss',
-                style: TextStyle(
-                    fontSize: 15, color: t1, fontWeight: FontWeight.bold),
-              )),
-        )
-      ],
-      content: Text(
-        errormessage,
-        style: TextStyle(color: t1, fontWeight: FontWeight.bold),
-      ),
-    );
-    progressDialog.dismiss();
-    // ignore: use_build_context_synchronously
-    alertDialog.show(context);
+        content: Text(
+          errormessage,
+          style: TextStyle(color: t1, fontWeight: FontWeight.bold),
+        ),
+      );
+      progressDialog.dismiss();
+      // ignore: use_build_context_synchronously
+      alertDialog.show(context);
+    }
   }
 
   TextEditingController firstnameController = TextEditingController();
