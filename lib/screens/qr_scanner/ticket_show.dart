@@ -41,8 +41,9 @@ class _TicketShowState extends State<TicketShow> {
         color: eventbgcolor,
         child: Padding(
           padding:
-              const EdgeInsets.only(left: 18, right: 14, top: 10, bottom: 12),
+              const EdgeInsets.only(left: 18, right: 14, top: 20, bottom: 12),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //headline
               Row(
@@ -57,11 +58,11 @@ class _TicketShowState extends State<TicketShow> {
                           border: Border.all(color: t2, width: 1),
                           borderRadius: BorderRadius.circular(12)),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Icon(
                           FontAwesome.left_open,
                           color: t2,
-                          size: 20,
+                          size: 18,
                         ),
                       ),
                     ),
@@ -94,9 +95,12 @@ class _TicketShowState extends State<TicketShow> {
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
+
               //ticket widget
-              ticketwidget()
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: ticketwidget(),
+              )
             ],
           ),
         ),
@@ -106,10 +110,10 @@ class _TicketShowState extends State<TicketShow> {
 
   Widget ticketwidget() {
     return TicketWidget(
-      color: eventbgcolor2,
+      color: Colors.purple.shade900,
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.8,
-      isCornerRounded: false,
+      isCornerRounded: true,
       padding: const EdgeInsets.only(left: 18, top: 15, bottom: 14, right: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
