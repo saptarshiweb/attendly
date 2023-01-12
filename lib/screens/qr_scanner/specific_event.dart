@@ -198,7 +198,7 @@ Widget aboutevent() {
         ),
         const SizedBox(height: 15),
         ReadMoreText(
-          'The GDSC is all about taking a view of different fields from a developer perspective, diving deep into the core technical aspects.',
+          'The GDSC Orientation is aimed at taking a peek of different fields from a developer perspective, diving deep into the technologies.',
           trimLines: 2,
           style: TextStyle(
             color: t2,

@@ -8,6 +8,8 @@ import 'package:fluttericon/typicons_icons.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class QrScan extends StatefulWidget {
   const QrScan({super.key});
@@ -21,14 +23,50 @@ class _QrScanState extends State<QrScan> {
   bool isscan = false;
   bool correctqr = false;
 
+  // ignore: non_constant_identifier_names
+  String Username = "";
+  String emailID = "";
+
   String correctId = 'helloworld';
   scanresult() async {
     final prefs = await SharedPreferences.getInstance();
     final bool? token = prefs.getBool("EventAttend");
+    final String? name = prefs.getString('Name');
+    final String? email = prefs.getString('Email');
+
+    Username = name!;
+    emailID = email!;
 
     if (token == true) {
       correctqr = true;
     }
+  }
+
+  Future attendeeinfo(
+      String name, String email, String event, String time) async {
+    String url = "https://attendly-backend.vercel.app/api/attendee/add";
+    // ignore: unused_local_variable
+    final response = await http.post(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'name': name,
+        'email': email,
+        'event': event,
+        'time': time
+      }),
+    );
+  }
+
+  Future getinfo() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? name = prefs.getString('Name');
+    final String? email = prefs.getString('Email');
+
+    Username = name!;
+    emailID = email!;
   }
 
   @override
@@ -188,11 +226,12 @@ class _QrScanState extends State<QrScan> {
                           result = res;
                         }
                       });
-
                       if (res == correctId) {
                         final prefs = await SharedPreferences.getInstance();
                         await prefs.setBool('EventAttend', true);
                         await prefs.setBool('EventRegister', true);
+                        attendeeinfo(
+                            Username, emailID, 'GDSC Orientation', '03:00 PM');
                       }
                     },
                     child: Padding(
@@ -258,6 +297,8 @@ class _QrScanState extends State<QrScan> {
                         final prefs = await SharedPreferences.getInstance();
                         await prefs.setBool('EventAttend', true);
                         await prefs.setBool('EventRegister', true);
+                        attendeeinfo(
+                            Username, emailID, 'GDSC Orientation', '03:00 PM');
                       }
                     },
                     child: Padding(
