@@ -99,7 +99,7 @@ Widget infowidget() {
                 Row(
                   children: [
                     Text(
-                      'GDSC Info-Session     ',
+                      'GDSC Orientation     ',
                       style: TextStyle(
                           color: t2, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -139,7 +139,7 @@ Widget infowidget() {
                     ),
                     const SizedBox(width: 2),
                     Text(
-                      ' 18:00 PM - 22:00 PM',
+                      ' 3:00 PM - 6:00 PM',
                       style:
                           TextStyle(color: Colors.grey.shade400, fontSize: 14),
                     ),
@@ -157,7 +157,7 @@ Widget infowidget() {
                 child: Column(
                   children: [
                     Text(
-                      'NOV',
+                      'JAN',
                       style: TextStyle(
                         color: t2,
                         fontSize: 12,
@@ -165,7 +165,7 @@ Widget infowidget() {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '18',
+                      '13',
                       style: TextStyle(
                           color: Colors.orangeAccent.shade400,
                           fontSize: 14,
@@ -198,7 +198,7 @@ Widget aboutevent() {
         ),
         const SizedBox(height: 15),
         ReadMoreText(
-          'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
+          'The GDSC is all about taking a view of different fields from a developer perspective, diving deep into the core technical aspects.',
           trimLines: 2,
           style: TextStyle(
             color: t2,

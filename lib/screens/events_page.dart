@@ -108,7 +108,7 @@ class _EventPageState extends State<EventPage> {
                   size: 25,
                 ),
                 Text(
-                  '     GDSC Info Session',
+                  '     GDSC Orientation',
                   style: TextStyle(
                       color: t2, fontSize: 18, fontWeight: FontWeight.bold),
                 ),

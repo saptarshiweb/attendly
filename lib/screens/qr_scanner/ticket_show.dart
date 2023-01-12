@@ -133,7 +133,7 @@ class _TicketShowState extends State<TicketShow> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'GDSC Info Session',
+                    'GDSC Orientation',
                     style: TextStyle(
                       color: t2,
                       fontWeight: FontWeight.bold,
@@ -159,7 +159,7 @@ class _TicketShowState extends State<TicketShow> {
           ),
           const SizedBox(height: 30),
           Text(
-            '    Location',
+            '    Venue',
             style: TextStyle(
               color: t3,
               fontSize: 17,
@@ -209,7 +209,7 @@ class _TicketShowState extends State<TicketShow> {
                     ),
                   ),
                   Text(
-                    '18 Nov 2022',
+                    '13 Jan 2023',
                     style: TextStyle(
                       color: t2,
                       fontWeight: FontWeight.bold,
@@ -235,7 +235,7 @@ class _TicketShowState extends State<TicketShow> {
                     ),
                   ),
                   Text(
-                    '18:00 PM',
+                    '03:00 PM',
                     style: TextStyle(
                       color: t2,
                       fontWeight: FontWeight.bold,
@@ -249,14 +249,14 @@ class _TicketShowState extends State<TicketShow> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    'Dresscode',
+                    'Mode',
                     style: TextStyle(
                       color: t3,
                       fontSize: 17,
                     ),
                   ),
                   Text(
-                    'Casual',
+                    'Offline',
                     style: TextStyle(
                       color: t2,
                       fontWeight: FontWeight.bold,
