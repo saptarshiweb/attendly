@@ -218,7 +218,9 @@ class _QrScanState extends State<QrScan> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const SimpleBarcodeScannerPage(),
+                                const SimpleBarcodeScannerPage(
+                                  appBarTitle: 'Attendee Scan',
+                                ),
                           ));
                       setState(() {
                         isscan = true;
